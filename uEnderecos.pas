@@ -16,7 +16,7 @@ type
     property Nome: string read FNome write FNome;
     property UF: string read FUF write FUF;
     property CEP: string read FCEP write FCEP;
-    property CopigoPais: string read FCodigoPais write FCodigoPais;
+    property CopigoPais: Integer read FCodigoPais write FCodigoPais;
     property NomePais: string read FNOmePais write FNomePais;
   end;
 
@@ -37,18 +37,13 @@ type
     property Complemento: string read FComplemento write FComplemento;
     property Bairro: string read FBairro write FBairro;
     property Municipio: TMunicipio read FMunicipio write FMunicipio;
-  end;
-
-  TEnderecosList = class(Tlist)
-  private
-    function getItem(Index: Integer): TEndereco;
-    procedure setItem(Index: Integer; const Value: TEndereco);
-  public
-    property Item[Index: Integer]: TEndereco read getItem write setItem; default;
+    function EnderecoCompleto(endereco: TEndereco): string;
   end;
 
 implementation
 
+uses
+  System.SysUtils;
 { TEndereco }
 
 constructor TEndereco.Create;
@@ -63,16 +58,19 @@ begin
   inherited;
 end;
 
-{ TEnderecosList }
 
-function TEnderecosList.getItem(Index: Integer): TEndereco;
+function TEndereco.EnderecoCompleto(endereco: TEndereco): string;
+var
+  s : TStringBuilder;
 begin
-  result := inherited
-end;
-
-procedure TEnderecosList.setItem(Index: Integer; const Value: TEndereco);
-begin
-
+  s := TStringBuilder.Create(endereco.Tipo);
+  s.Append(':');
+  s.Append(endereco.Nome);
+  s.Append(' ');
+  s.Append(endereco.Numero);
+  s.Append(' ');
+  s.Append(endereco.Bairro);
+  Result := s.ToString;
 end;
 
 end.
