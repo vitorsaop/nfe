@@ -47,12 +47,7 @@ type
     btnimprimir: TSpeedButton;
     btncancelar: TSpeedButton;
     btnsalvar: TSpeedButton;
-    btnsair: TSpeedButton;
     btneditar: TSpeedButton;
-    btnultimo: TSpeedButton;
-    btnproximo: TSpeedButton;
-    btnanterior: TSpeedButton;
-    btnprimeiro: TSpeedButton;
     imgcrud: TImageList;
     actnovoenable: TAction;
     acteditarenable: TAction;
@@ -79,6 +74,11 @@ type
     actbuscardisable: TAction;
     actbuscarenable: TAction;
     btnbuscar: TSpeedButton;
+    btnprimeiro: TSpeedButton;
+    btnanterior: TSpeedButton;
+    btnproximo: TSpeedButton;
+    btnultimo: TSpeedButton;
+    btnsair: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnnovoMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -86,6 +86,8 @@ type
     procedure btnnovoMouseLeave(Sender: TObject);
     procedure actsalvarenableUpdate(Sender: TObject);
     procedure actnovoenableUpdate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnsairClick(Sender: TObject);
   private
     FCheckUnique : TDictionary<string,string>;
     procedure setCheckUnique(const value : TDictionary<string,string>);
@@ -111,6 +113,9 @@ var
   frmbasecrud: Tfrmbasecrud;
 
 implementation
+
+uses
+  libForm;
 
 {$R *.dfm}
 
@@ -169,7 +174,15 @@ procedure Tfrmbasecrud.FormCreate(Sender: TObject);
 begin
   inherited;
   FCheckUnique := TDictionary<string,string>.Create();
+  pc.TabIndex := 1;
   //dsquery.DataSet.AfterScroll := DoAfterScroll();
+end;
+
+procedure Tfrmbasecrud.FormShow(Sender: TObject);
+begin
+  inherited;
+  Label1.Caption := Self.Caption;
+  self.Align := alClient;
 end;
 
 procedure Tfrmbasecrud.LoadPermissao;
@@ -204,6 +217,13 @@ begin
   //SpeedButton4.Action := actnovoenable;
   //if btnnovo.Action = actnovodisable then
     //habilitarbotao(Sender,actnovoenable);
+end;
+
+procedure Tfrmbasecrud.btnsairClick(Sender: TObject);
+begin
+  inherited;
+  if Assigned(self.Parent) then
+    FecharAba(TcxPageControl(self.Parent.Parent),Self.Caption);
 end;
 
 procedure Tfrmbasecrud.habilitarbotao(Sender: TObject; vaction: TAction);

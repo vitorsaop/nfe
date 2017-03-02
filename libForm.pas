@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxPC, cxStyles, cxCustomData, formBase;
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxPC, cxStyles, cxCustomData, baseform;//formBase;
 
   function CriarAba(ACxPC : TcxPageControl; AClsForm : TFormClass;
                     ANome : string; var AForm : TForm) : TcxTabSheet;
@@ -36,13 +36,13 @@ begin
     begin
       TabSheet.Color    := clGray;
       PageControl       := AcxPC;
-      Caption           := Form.Caption;
+      Caption           := ANome;//Form.Caption;
     end;
 
     with Form do
     begin
-      Align             := alNone;
-      BorderStyle       := bsSizeable;
+      Align             := alClient;
+      BorderStyle       := bsNone;
       Parent            := TabSheet;
       Caption           := ANome;
       Show;

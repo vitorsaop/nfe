@@ -1,8 +1,8 @@
 inherited frmbasecrud: Tfrmbasecrud
-  BorderStyle = bsToolWindow
+  BorderStyle = bsNone
   Caption = ''
-  ClientHeight = 571
-  ClientWidth = 786
+  ClientHeight = 600
+  ClientWidth = 792
   Position = poDesigned
   OnClose = FormClose
   OnCreate = FormCreate
@@ -12,15 +12,15 @@ inherited frmbasecrud: Tfrmbasecrud
   TextHeight = 13
   object sbinfo: TStatusBar [0]
     Left = 0
-    Top = 552
-    Width = 786
+    Top = 581
+    Width = 792
     Height = 19
     Panels = <>
   end
   object pnCaption: TPanel [1]
     Left = 0
     Top = 0
-    Width = 786
+    Width = 792
     Height = 37
     Align = alTop
     Color = 16119285
@@ -57,14 +57,13 @@ inherited frmbasecrud: Tfrmbasecrud
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      ExplicitTop = 12
-      ExplicitHeight = 20
+      ExplicitHeight = 22
     end
   end
   object pntools: TPanel [2]
     Left = 0
     Top = 37
-    Width = 786
+    Width = 792
     Height = 72
     Align = alTop
     Color = clWindow
@@ -78,7 +77,7 @@ inherited frmbasecrud: Tfrmbasecrud
     ParentCtl3D = False
     ParentFont = False
     TabOrder = 2
-    ExplicitTop = 43
+    Visible = False
     object btnnovo: TSpeedButton
       Left = 4
       Top = 8
@@ -129,14 +128,6 @@ inherited frmbasecrud: Tfrmbasecrud
       OnMouseLeave = btnnovoMouseLeave
       OnMouseMove = btnnovoMouseMove
     end
-    object btnsair: TSpeedButton
-      Left = 723
-      Top = 8
-      Width = 54
-      Height = 60
-      Action = actsairenable
-      Flat = True
-    end
     object btneditar: TSpeedButton
       Left = 64
       Top = 8
@@ -147,63 +138,6 @@ inherited frmbasecrud: Tfrmbasecrud
       Transparent = False
       OnMouseLeave = btnnovoMouseLeave
       OnMouseMove = btnnovoMouseMove
-    end
-    object btnultimo: TSpeedButton
-      Left = 653
-      Top = 8
-      Width = 54
-      Height = 60
-      Action = actultimoenable
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
-      Font.Name = 'Calibri'
-      Font.Style = []
-      Layout = blGlyphTop
-      ParentFont = False
-    end
-    object btnproximo: TSpeedButton
-      Left = 594
-      Top = 8
-      Width = 54
-      Height = 60
-      Action = actproximoenable
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
-      Font.Name = 'Calibri'
-      Font.Style = []
-      ParentFont = False
-    end
-    object btnanterior: TSpeedButton
-      Left = 534
-      Top = 8
-      Width = 54
-      Height = 60
-      Action = actanteriorenable
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
-      Font.Name = 'Calibri'
-      Font.Style = []
-      ParentFont = False
-    end
-    object btnprimeiro: TSpeedButton
-      Left = 471
-      Top = 8
-      Width = 54
-      Height = 60
-      Action = actprimeiroenable
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
-      Font.Name = 'Calibri'
-      Font.Style = []
-      ParentFont = False
     end
     object btnbuscar: TSpeedButton
       Left = 244
@@ -219,28 +153,90 @@ inherited frmbasecrud: Tfrmbasecrud
   object pc: TPageControl [3]
     Left = 0
     Top = 109
-    Width = 786
-    Height = 443
-    ActivePage = tabquery
+    Width = 792
+    Height = 472
+    ActivePage = tabcrud
     Align = alClient
     TabOrder = 3
-    ExplicitTop = 115
-    ExplicitHeight = 437
     object tabcrud: TTabSheet
       Caption = 'tabcrud'
-      ExplicitHeight = 409
     end
     object tabquery: TTabSheet
       Caption = 'tabquery'
       ImageIndex = 1
-      ExplicitHeight = 409
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 778
+        Width = 784
         Height = 41
         Align = alTop
         TabOrder = 0
+        object btnprimeiro: TSpeedButton
+          Left = 471
+          Top = 5
+          Width = 54
+          Height = 60
+          Action = actprimeiroenable
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Calibri'
+          Font.Style = []
+          ParentFont = False
+        end
+        object btnanterior: TSpeedButton
+          Left = 534
+          Top = 5
+          Width = 54
+          Height = 60
+          Action = actanteriorenable
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Calibri'
+          Font.Style = []
+          ParentFont = False
+        end
+        object btnproximo: TSpeedButton
+          Left = 594
+          Top = 5
+          Width = 54
+          Height = 60
+          Action = actproximoenable
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Calibri'
+          Font.Style = []
+          ParentFont = False
+        end
+        object btnultimo: TSpeedButton
+          Left = 653
+          Top = 5
+          Width = 54
+          Height = 60
+          Action = actultimoenable
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Calibri'
+          Font.Style = []
+          Layout = blGlyphTop
+          ParentFont = False
+        end
+        object btnsair: TSpeedButton
+          Left = 723
+          Top = 5
+          Width = 54
+          Height = 60
+          Action = actsairenable
+          Flat = True
+          OnClick = btnsairClick
+        end
         object edtbusca: TButtonedEdit
           Left = 8
           Top = 8
@@ -261,8 +257,8 @@ inherited frmbasecrud: Tfrmbasecrud
       object dbquery: TDBGrid
         Left = 0
         Top = 41
-        Width = 778
-        Height = 374
+        Width = 784
+        Height = 403
         Align = alClient
         Options = [dgTitles, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 1
@@ -295,7 +291,7 @@ inherited frmbasecrud: Tfrmbasecrud
     Left = 112
     Top = 208
     Bitmap = {
-      494C010102000800680010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000800700010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -563,7 +559,7 @@ inherited frmbasecrud: Tfrmbasecrud
     Left = 332
     Top = 337
     Bitmap = {
-      494C0101180078009C003C003C00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010118007800A4003C003C00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000F0000000A401000001002000000000000027
       0600000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
